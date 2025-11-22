@@ -22,9 +22,10 @@ export default function ChatInterface() {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const { language, setLanguage, t } = useLanguage();
   const prevMessagesLengthRef = useRef(0);
+  const scrollTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Auto-scroll to bottom when new messages arrive (only when message count increases)
-  const scrollToBottom = (force = false) => {
+  const scrollToBottom = (force = false, delay = 300) => {
     if (!messagesContainerRef.current) return;
 
     const container = messagesContainerRef.current;
@@ -32,31 +33,76 @@ export default function ChatInterface() {
 
     // Only auto-scroll if user is near bottom or force is true
     if (force || isNearBottom) {
-      setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-      }, 100);
+      // Clear any existing scroll timer
+      if (scrollTimerRef.current) {
+        clearTimeout(scrollTimerRef.current);
+      }
+
+      // Use requestAnimationFrame to ensure DOM is updated
+      requestAnimationFrame(() => {
+        scrollTimerRef.current = setTimeout(() => {
+          if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          } else {
+            // Fallback: scroll container directly
+            container.scrollTop = container.scrollHeight;
+          }
+          scrollTimerRef.current = null;
+        }, delay);
+      });
     }
   };
 
-  // Scroll only when new message is added (not during loading)
+  // Scroll only when new message is added
   useEffect(() => {
     if (messages.length > prevMessagesLengthRef.current) {
       // New message added, scroll after a short delay to let content render
-      setTimeout(() => {
-        scrollToBottom(true);
-      }, 300);
+      // But skip if loading (typing indicator scroll will handle it)
+      if (!isLoading) {
+        scrollToBottom(true, 300);
+      }
       prevMessagesLengthRef.current = messages.length;
     }
-  }, [messages]);
+  }, [messages, isLoading]);
 
-  // Scroll when loading finishes (AI response complete)
+  // Scroll when loading starts (typing indicator appears)
   useEffect(() => {
-    if (!isLoading && messages.length > 0) {
-      setTimeout(() => {
-        scrollToBottom(true);
-      }, 500);
+    if (isLoading && messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+
+      // Aggressive scroll function that tries multiple times
+      const forceScroll = () => {
+        if (container) {
+          // Direct scroll to bottom - most reliable method
+          container.scrollTop = container.scrollHeight;
+        }
+      };
+
+      // Try immediately
+      forceScroll();
+
+      // Use requestAnimationFrame for next frame
+      requestAnimationFrame(() => {
+        forceScroll();
+        requestAnimationFrame(() => {
+          forceScroll();
+        });
+      });
+
+      // Also try with delays to catch typing indicator after animation completes
+      const timers = [
+        setTimeout(forceScroll, 200),
+        setTimeout(forceScroll, 400),
+        setTimeout(forceScroll, 600),
+        setTimeout(forceScroll, 800),
+        setTimeout(forceScroll, 1000),
+      ];
+
+      return () => {
+        timers.forEach(timer => clearTimeout(timer));
+      };
     }
-  }, [isLoading, messages.length]);
+  }, [isLoading]);
 
   // Auto-resize textarea
   useEffect(() => {

@@ -17,3 +17,4 @@ console.log(githubSection?.substring(0, 500) + '...');
 const mediumSection = prompt.split('## Medium Articles (Live)')[1]?.split('##')[0];
 console.log('\nMedium section preview:');
 console.log(mediumSection?.substring(0, 500) + '...');
+
