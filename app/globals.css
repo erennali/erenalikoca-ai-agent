@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 3, 7, 18;
+  --background-end-rgb: 15, 23, 42;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #030712;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection Color */
+::selection {
+  background: rgba(139, 92, 246, 0.3); /* Violet-500 with opacity */
+  color: white;
+}
+
+/* Markdown Styles */
+.prose strong {
+  color: white;
+  font-weight: 600;
+}
+
+.prose a {
+  color: #a78bfa; /* violet-400 */
+  text-decoration: none;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+  transition: all 0.2s;
+}
+
+.prose a:hover {
+  color: #c4b5fd; /* violet-300 */
+  border-bottom-color: #c4b5fd;
+}
+
+.prose code {
+  color: #c4b5fd;
+  background: rgba(15, 23, 42, 0.5);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
+  font-weight: 400;
+}
+
+.prose ul > li::marker {
+  color: #8b5cf6; /* violet-500 */
+}
