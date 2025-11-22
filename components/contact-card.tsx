@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Github, Globe, FileText, ExternalLink, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Globe, FileText, ExternalLink, ArrowRight, Calendar } from 'lucide-react';
 import { useLanguage } from '@/contexts/language-context';
 
 export default function ContactCard() {
@@ -50,6 +50,13 @@ export default function ContactCard() {
       href: '/ErenAliKoca_CV.pdf',
       download: true,
       color: 'from-violet-600 to-purple-600',
+    },
+    {
+      icon: Calendar,
+      label: language === 'tr' ? 'Görüşme Planla' : 'Schedule a Call',
+      value: language === 'tr' ? 'Calendly' : 'Calendly',
+      href: 'https://calendly.com/erenalikoca/meet',
+      color: 'from-blue-500 to-indigo-600',
     },
   ];
 

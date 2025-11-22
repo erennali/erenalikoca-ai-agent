@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { User, Bot, Sparkles } from 'lucide-react';
+import { User, Bot, Sparkles, Calendar, ExternalLink } from 'lucide-react';
 import ContactCard from './contact-card';
+import { useLanguage } from '@/contexts/language-context';
 
 interface MessageBubbleProps {
   message: string;
@@ -16,6 +17,8 @@ export default function MessageBubble({
   isUser,
   index,
 }: MessageBubbleProps) {
+  const { language, t } = useLanguage();
+  
   // Detect if message contains contact-related keywords
   const shouldShowContactCard = !isUser && (
     message.toLowerCase().includes('iletişim') ||
@@ -27,6 +30,20 @@ export default function MessageBubble({
     message.toLowerCase().includes('ulaş') ||
     message.toLowerCase().includes('reach out') ||
     message.toLowerCase().includes('get in touch')
+  );
+
+  // Detect if message contains scheduling/meeting-related keywords
+  const shouldShowCalendlyButton = !isUser && (
+    message.toLowerCase().includes('calendly') ||
+    message.toLowerCase().includes('schedule') ||
+    message.toLowerCase().includes('meeting') ||
+    message.toLowerCase().includes('call') ||
+    message.toLowerCase().includes('randevu') ||
+    message.toLowerCase().includes('görüşme') ||
+    message.toLowerCase().includes('planla') ||
+    message.toLowerCase().includes('planlayabilir') ||
+    message.toLowerCase().includes('interview') ||
+    message.toLowerCase().includes('mülakat')
   );
 
   return (
@@ -127,6 +144,29 @@ export default function MessageBubble({
           <div className="mt-6">
             <ContactCard />
           </div>
+        )}
+
+        {/* Show Calendly button if AI mentions scheduling */}
+        {shouldShowCalendlyButton && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4"
+          >
+            <motion.a
+              href="https://calendly.com/erenalikoca/meet"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2.5 px-5 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-2xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 border border-blue-400/20"
+            >
+              <Calendar className="w-5 h-5" />
+              <span>{language === 'tr' ? 'Görüşme Planla' : 'Schedule a Call'}</span>
+              <ExternalLink className="w-4 h-4" />
+            </motion.a>
+          </motion.div>
         )}
 
         {/* Timestamp or Status (Optional) */}

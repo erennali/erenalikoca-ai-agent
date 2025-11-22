@@ -20,6 +20,8 @@ export const translations = {
       githubPrompt: 'GitHub\'da neler yapmışsın? En güncel projelerini göster.',
       contact: 'Nasıl iletişime geçilir',
       contactPrompt: 'Seninle nasıl iletişime geçebilirim?',
+      schedule: 'Görüşme Planla',
+      schedulePrompt: 'Seninle bir görüşme planlayabilir miyim?',
     },
   },
   en: {
@@ -41,6 +43,8 @@ export const translations = {
       githubPrompt: 'What have you built on GitHub? Show me your recent projects.',
       contact: 'How to contact',
       contactPrompt: 'How can I get in touch with you?',
+      schedule: 'Schedule a Call',
+      schedulePrompt: 'Can I schedule a meeting with you?',
     },
   },
 };

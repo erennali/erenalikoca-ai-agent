@@ -17,3 +17,4 @@ fetchedData.mediumArticles.slice(0, 3).forEach(article => {
   console.log(`- ${article.title}`);
 });
 
+

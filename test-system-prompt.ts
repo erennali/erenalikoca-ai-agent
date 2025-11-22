@@ -18,3 +18,4 @@ const mediumSection = prompt.split('## Medium Articles (Live)')[1]?.split('##')[
 console.log('\nMedium section preview:');
 console.log(mediumSection?.substring(0, 500) + '...');
 
+

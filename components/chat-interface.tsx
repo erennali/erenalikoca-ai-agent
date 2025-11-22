@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Sparkles, Languages, FileDown, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Send, Sparkles, Languages, FileDown, Github, Linkedin, ExternalLink, Calendar } from 'lucide-react';
 import MessageBubble from './message-bubble';
 import TypingIndicator from './typing-indicator';
 import SuggestionChips from './suggestion-chips';
@@ -287,6 +287,16 @@ export default function ChatInterface() {
                     >
                       <FileDown className="w-5 h-5" />
                       {t.downloadCV}
+                    </motion.a>
+                    <motion.a
+                      href="https://calendly.com/erenalikoca/meet"
+                      target="_blank"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-lg shadow-blue-500/20"
+                    >
+                      <Calendar className="w-5 h-5" />
+                      {t.suggestions.schedule}
                     </motion.a>
                     <motion.a
                       href="https://erenalikoca.com"

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/language-context';
-import { Code2, Briefcase, Github, Sparkles } from 'lucide-react';
+import { Code2, Briefcase, Github, Sparkles, Calendar } from 'lucide-react';
 
 interface SuggestionChipsProps {
   onSelect: (prompt: string) => void;
@@ -43,6 +43,14 @@ export default function SuggestionChips({ onSelect }: SuggestionChipsProps) {
       color: 'text-amber-400',
       bg: 'bg-amber-500/10',
       border: 'hover:border-amber-500/50'
+    },
+    {
+      icon: Calendar,
+      label: t.suggestions.schedule,
+      prompt: t.suggestions.schedulePrompt,
+      color: 'text-blue-400',
+      bg: 'bg-blue-500/10',
+      border: 'hover:border-blue-500/50'
     },
   ];
 

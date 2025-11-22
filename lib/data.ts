@@ -60,6 +60,7 @@ export const PORTFOLIO_CONTEXT = {
       github: "https://github.com/erennali",
       portfolio: "https://erenalikoca.com",
       medium: "https://erenali.medium.com",
+      calendly: "https://calendly.com/erenalikoca/meet",
     },
   },
 
