@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { model } from '@/lib/gemini';
+import { getModel } from '@/lib/gemini';
 import { generateSystemPrompt } from '@/lib/prompt';
 import { Language } from '@/lib/translations';
 
@@ -38,6 +38,9 @@ export async function POST(req: NextRequest) {
       parts: [{ text: msg.content }],
     }));
 
+    // Get model instance (lazy initialization - only at runtime)
+    const model = getModel();
+    
     // Start a chat session with history
     const chat = model.startChat({
       history: [

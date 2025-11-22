@@ -56,7 +56,7 @@ export default function ChatInterface() {
         scrollToBottom(true);
       }, 500);
     }
-  }, [isLoading]);
+  }, [isLoading, messages.length]);
 
   // Auto-resize textarea
   useEffect(() => {
