@@ -55,29 +55,22 @@ export default function SuggestionChips({ onSelect }: SuggestionChipsProps) {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-3xl mx-auto px-4">
+    <div className="flex flex-wrap justify-center gap-2 w-full max-w-md mx-auto px-4">
       {suggestions.map((suggestion, index) => {
         const Icon = suggestion.icon;
         return (
           <motion.button
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 + index * 0.1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 + index * 0.05 }}
             onClick={() => onSelect(suggestion.prompt)}
-            className={`group flex items-center gap-4 p-4 text-left bg-white/5 hover:bg-white/10 border border-white/5 ${suggestion.border} rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg backdrop-blur-sm`}
+            className={`group flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/5 ${suggestion.border} rounded-full transition-all duration-300 backdrop-blur-sm`}
           >
-            <div className={`p-3 rounded-xl ${suggestion.bg} ${suggestion.color} group-hover:scale-110 transition-transform duration-300`}>
-              <Icon className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="block text-xs sm:text-sm font-bold text-slate-200 group-hover:text-white transition-colors">
-                {suggestion.label}
-              </span>
-              <span className="text-[10px] sm:text-xs text-slate-500 group-hover:text-slate-400">
-                Click to ask
-              </span>
-            </div>
+            <Icon className={`w-3 h-3 ${suggestion.color}`} />
+            <span className="text-[10px] sm:text-xs font-bold text-slate-300 group-hover:text-white whitespace-nowrap">
+              {suggestion.label}
+            </span>
           </motion.button>
         );
       })}

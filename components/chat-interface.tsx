@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Sparkles, Languages, FileDown, Github, Linkedin, ExternalLink, Calendar } from 'lucide-react';
+import { Send, Sparkles, Languages, FileDown, Github, Linkedin, ExternalLink, Calendar, BookOpen } from 'lucide-react';
 import MessageBubble from './message-bubble';
 import TypingIndicator from './typing-indicator';
 import SuggestionChips from './suggestion-chips';
@@ -276,16 +276,16 @@ export default function ChatInterface() {
                     {t.welcomeMessage}
                   </p>
 
-                  <div className="flex flex-wrap justify-center gap-3 mb-8">
+                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
                     <motion.a
                       href="/ErenAliKoca_CV.pdf"
                       download="ErenAliKoca_CV.pdf"
                       target="_blank"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-3 py-2 sm:px-5 sm:py-2.5 bg-white text-slate-900 hover:bg-slate-100 rounded-xl font-semibold text-xs sm:text-sm transition-all shadow-md shadow-white/5"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-slate-900 hover:bg-slate-100 rounded-lg font-bold text-[10px] sm:text-xs transition-all shadow-md shadow-white/5"
                     >
-                      <FileDown className="w-4 h-4" />
+                      <FileDown className="w-3.5 h-3.5" />
                       {t.downloadCV}
                     </motion.a>
                     <motion.a
@@ -293,19 +293,29 @@ export default function ChatInterface() {
                       target="_blank"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-3 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-xl font-semibold text-xs sm:text-sm transition-all shadow-md shadow-blue-500/20"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-lg font-bold text-[10px] sm:text-xs transition-all shadow-md shadow-blue-500/20"
                     >
-                      <Calendar className="w-4 h-4" />
-                      {t.suggestions.schedule}
+                      <Calendar className="w-3.5 h-3.5" />
+                      {language === 'tr' ? 'Görüşme' : 'Schedule'}
+                    </motion.a>
+                    <motion.a
+                      href="https://erenali.medium.com/"
+                      target="_blank"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white font-bold text-[10px] sm:text-xs transition-all backdrop-blur-sm"
+                    >
+                      <BookOpen className="w-3.5 h-3.5 text-violet-400" />
+                      Medium
                     </motion.a>
                     <motion.a
                       href="https://erenalikoca.com"
                       target="_blank"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white font-medium text-xs sm:text-sm transition-all backdrop-blur-sm"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-white font-bold text-[10px] sm:text-xs transition-all backdrop-blur-sm"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
                       Portfolio
                     </motion.a>
                   </div>
