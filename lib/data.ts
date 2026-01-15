@@ -104,16 +104,16 @@ export const PORTFOLIO_CONTEXT = {
       positionTr: "Yazılım Geliştirici",
       period: "Aug 2025 - Present",
       responsibilities: [
-        "Developing mobile applications with React Native, adhering to SOLID principles, OOP, and Clean Code standards",
+        "Developing cloud-native banking solutions using Fimple infrastructure with .NET Core backend and React frontend",
+        "Applying advanced SOLID principles, OOP, and Clean Code standards across all development layers",
         "Integrating with .NET backend services built using Onion Architecture, CQRS, and MediatR patterns",
-        "Working directly with PostgreSQL database for data management",
-        "Collaborating with cross-functional teams in Agile/Scrum environment",
+        "Implementing high-quality, testable code for financial data management with PostgreSQL",
       ],
       responsibilitiesTr: [
-        "SOLID prensipleri, OOP ve Clean Code standartlarına uygun React Native ile mobil uygulama geliştirme",
+        "Fimple altyapısı kullanarak .NET Core backend ve React frontend ile bulut yerel bankacılık çözümleri geliştirme",
+        "Tüm geliştirme katmanlarında ileri seviye SOLID prensipleri, OOP ve Clean Code standartlarını uygulama",
         "Onion Architecture, CQRS ve MediatR pattern'leri kullanılarak oluşturulmuş .NET backend servisleriyle entegrasyon",
-        "Veri yönetimi için doğrudan PostgreSQL veritabanı ile çalışma",
-        "Agile/Scrum ortamında çapraz fonksiyonel ekiplerle işbirliği",
+        "PostgreSQL ile finansal veri yönetimi için yüksek kaliteli ve test edilebilir kod implementasyonu",
       ],
     },
     {
@@ -149,19 +149,23 @@ export const PORTFOLIO_CONTEXT = {
       ],
     },
     {
-      company: "Turkcell Gençlere Yatırım Geleceğe Yazılım 4.5 Bootcamp",
-      position: "Swift Bootcamp Participant",
-      positionTr: "Swift Bootcamp Katılımcısı",
-      period: "Aug 2025 - Present",
+      company: "Turkcell Gençlere Yatırım Geleceğe Yazılım 4.5 (Geleceği Yazanlar)",
+      position: "Swift iOS Bootcamp Graduate",
+      positionTr: "Swift iOS Bootcamp Mezunu (Başarıyla Tamamlandı)",
+      period: "Aug 2024 - Dec 2024",
       responsibilities: [
-        "Completed intensive Swift Bootcamp developing proficiency in UIKit and SwiftUI",
-        "Applied iOS architectural patterns: MVVM, VIPER, MVC, and MVVM-C",
-        "Completed three scored projects and one final App Store-ready application",
+        "Successfully graduated with high marks from the intensive Swift iOS Bootcamp, specializing in Apple ecosystem",
+        "Mastered UIKit and SwiftUI architectures, following Apple's HIG (Human Interface Guidelines)",
+        "Implemented SOLID, OOP, and Clean Code principles in large-scale iOS projects",
+        "Developed professional-grade iOS applications using: MVVM, VIPER, MVC, and MVVM-C",
+        "Selected as a top performer for App Store-ready final products featuring modern Apple frameworks",
       ],
       responsibilitiesTr: [
-        "UIKit ve SwiftUI'da yetkinlik geliştiren yoğun Swift Bootcamp'i tamamlama",
-        "iOS mimari pattern'lerini uygulama: MVVM, VIPER, MVC ve MVVM-C",
-        "Üç puanlı proje ve bir final App Store'a hazır uygulama tamamlama",
+        "Apple ekosisteminde uzmanlaşarak yoğun Swift iOS Bootcamp'inden yüksek başarıyla mezun olma",
+        "Apple'ın HIG (Human Interface Guidelines) standartlarını takip ederek UIKit ve SwiftUI mimarilerinde uzmanlaşma",
+        "Büyük ölçekli iOS projelerinde SOLID, OOP ve Clean Code prensiplerini titizlikle uygulama",
+        "MVVM, VIPER, MVC ve MVVM-C mimarileriyle profesyonel düzeyde iOS uygulamaları geliştirme",
+        "Modern Apple framework'lerini kullanan, App Store'a hazır final projeleri geliştiren en iyi öğrenciler arasına seçilme",
       ],
     },
     {
@@ -366,7 +370,7 @@ export const PORTFOLIO_CONTEXT = {
     careerGoals:
       "Become a senior iOS developer working on products that impact millions of users. Long-term, I want to lead a mobile development team, contribute to open-source iOS projects, and mentor junior developers. I'm particularly interested in combining AI/ML with mobile development to create innovative user experiences.",
     careerGoalsTr:
-      "Milyonlarca kullanıcıyı etkileyen ürünler üzerinde çalışan kıdemli bir iOS geliştiricisi olmak. Uzun vadede, bir mobil geliştirme ekibine liderlik etmek, açık kaynak iOS projelerine katkıda bulunmak ve junior geliştiricilere mentorluk yapmak istiyorum. Özellikle yenilikçi kullanıcı deneyimleri oluşturmak için AI/ML'yi mobil geliştirme ile birleştirmekle ilgileniyorum.",
+      "Milyonlarca kullanıcıyı etkileyen ürünler üzerinde çalışan kıdemli bir iOS geliştiricisi olmak. Uzun vadede, bir mobil geliştirme ekibine liderlik etmek, açık kaynak iOS projelerine katkıda bulunmak ve junior geliştiricilere mentorluk yapmak istiyorum. Özellikle yenilikçi kullanıcı deneyimleri oluşturmak için AI/ML'yi mobil geliştirme ile birleştirmekle ilgileniyorum. Ayrıca Medium üzerinden teknik bilgi paylaşımı yaparak topluluğa katkıda bulunmaya devam ediyorum.",
   },
 
   availability: {

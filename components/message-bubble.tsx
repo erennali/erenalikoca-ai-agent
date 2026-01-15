@@ -18,7 +18,7 @@ export default function MessageBubble({
   index,
 }: MessageBubbleProps) {
   const { language, t } = useLanguage();
-  
+
   // Detect if message contains contact-related keywords
   const shouldShowContactCard = !isUser && (
     message.toLowerCase().includes('iletişim') ||
@@ -51,44 +51,44 @@ export default function MessageBubble({
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`flex items-start gap-3 sm:gap-5 ${isUser ? 'flex-row-reverse' : 'flex-row'} group`}
+      className={`flex items-start gap-2 sm:gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'} group`}
     >
       {/* Avatar */}
       <div className="flex-shrink-0 relative">
-        <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shadow-lg ${isUser
+        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center shadow-md ${isUser
           ? 'bg-gradient-to-br from-violet-600 to-blue-600'
           : 'bg-slate-800 border border-white/10'
           }`}>
           {isUser ? (
-            <User className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+            <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
           ) : (
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-violet-400" />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />
           )}
         </div>
         {!isUser && (
-          <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#030712]"></div>
+          <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-[#030712]"></div>
         )}
       </div>
 
       {/* Message Content */}
-      <div className={`flex-1 max-w-[92%] sm:max-w-[85%] md:max-w-[80%]`}>
+      <div className={`max-w-[88%] sm:max-w-[80%] md:max-w-[75%] ${isUser ? 'flex flex-col items-end' : ''}`}>
         <div
-          className={`relative px-4 py-3 sm:px-5 sm:py-4 md:px-6 md:py-5 rounded-3xl shadow-sm ${isUser
+          className={`relative px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl shadow-sm inline-block ${isUser
             ? 'bg-gradient-to-br from-violet-600/90 to-blue-600/90 text-white rounded-tr-sm backdrop-blur-sm'
-            : 'bg-white/5 text-slate-200 rounded-tl-sm border border-white/5 backdrop-blur-md'
+            : 'bg-white/5 text-slate-200 rounded-tl-sm border border-white/5 backdrop-blur-md w-full'
             }`}
         >
           {isUser ? (
-            <p className="text-xs sm:text-sm md:text-base leading-relaxed whitespace-pre-wrap">{message}</p>
+            <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">{message}</p>
           ) : (
-            <div className="prose prose-invert prose-xs sm:prose-sm md:prose-base max-w-none">
+            <div className="prose prose-invert prose-xs sm:prose-sm max-w-none">
               <ReactMarkdown
                 components={{
                   p: ({ children }) => (
-                    <p className="mb-3 last:mb-0 leading-relaxed text-xs sm:text-sm text-slate-300">{children}</p>
+                    <p className="mb-2 last:mb-0 leading-relaxed text-xs sm:text-sm text-slate-300">{children}</p>
                   ),
                   strong: ({ children }) => (
-                    <strong className="font-bold text-white text-xs sm:text-sm md:text-base">
+                    <strong className="font-bold text-white text-xs sm:text-sm">
                       {children}
                     </strong>
                   ),
@@ -98,12 +98,12 @@ export default function MessageBubble({
                     </code>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside space-y-2 my-3 marker:text-violet-500">
+                    <ul className="list-disc list-inside space-y-1 my-2 marker:text-violet-500">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside space-y-2 my-3 marker:text-violet-500">
+                    <ol className="list-decimal list-inside space-y-1 my-2 marker:text-violet-500">
                       {children}
                     </ol>
                   ),
@@ -121,13 +121,13 @@ export default function MessageBubble({
                     </a>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="font-bold text-white text-sm sm:text-base md:text-lg mt-4 mb-2 flex items-center gap-2">
-                      <span className="w-1 h-4 bg-violet-500 rounded-full inline-block"></span>
+                    <h3 className="font-bold text-white text-sm sm:text-base mt-3 mb-1.5 flex items-center gap-2">
+                      <span className="w-0.5 h-3 bg-violet-500 rounded-full inline-block"></span>
                       {children}
                     </h3>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-3 border-violet-500/30 pl-4 my-3 italic text-xs sm:text-sm text-slate-400">
+                    <blockquote className="border-l-2 border-violet-500/30 pl-3 my-2 italic text-xs sm:text-sm text-slate-400">
                       {children}
                     </blockquote>
                   ),
@@ -141,7 +141,7 @@ export default function MessageBubble({
 
         {/* Show interactive contact card if AI mentions contact info */}
         {shouldShowContactCard && (
-          <div className="mt-6">
+          <div className="mt-3">
             <ContactCard />
           </div>
         )}
@@ -152,7 +152,7 @@ export default function MessageBubble({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-4"
+            className="mt-2.5"
           >
             <motion.a
               href="https://calendly.com/erenalikoca/meet"
@@ -160,7 +160,7 @@ export default function MessageBubble({
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2.5 px-5 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-2xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 border border-blue-400/20"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-xl font-semibold text-xs sm:text-sm transition-all shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 border border-blue-400/20"
             >
               <Calendar className="w-5 h-5" />
               <span>{language === 'tr' ? 'Görüşme Planla' : 'Schedule a Call'}</span>
